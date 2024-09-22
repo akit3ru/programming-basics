@@ -21,7 +21,7 @@
 - long double: 8 байт, от 2.23E-308 до 1.8E+308.
 
 3. символьные
-- char: 1 байт, от -128 до 127 или от 0 до 255
+- char: 1 байт, от 0 до 255
 - wchar_t: 2 или 4 байта, от 0 до 65 535 или от 0 до 4 294 967 295 соответственно
 - char8_t: 1 байт, от 0 до 256
 - char16_t: 2 байта, от 0 до 65 535
@@ -31,6 +31,7 @@
 - bool: 1 байт, от 0 до 255.
 */
 
+/*
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -107,4 +108,31 @@ int main()
 {
     dataTypeOutput();
     examples();
+} 
+*/
+
+// лаб 1, вариант 2
+#include <iostream>;
+using std::cout, std::endl, std::cin;
+
+int square_triangle()
+{
+    unsigned long h = 0, a = 0;
+    cout << "Программа для рассчёта площади треугольника <3" << endl;
+    cout << "Введите высоту треугольника: ";
+    cin >> h;
+    cout << "Введите длину основания треугольника: ";
+    cin >> a;
+    double s = (a * h) / 2.0;
+    cout << "Площадь равна " << s;
+
+    return 0;
 }
+
+int main()
+{
+    square_triangle();
+
+    return 0;
+}
+
