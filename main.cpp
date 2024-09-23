@@ -211,6 +211,7 @@ int numberSign()
     cout << "введите 1 или -1: ";
     int x = 0;
     cin >> x;
+    cout << (x > 0 ? "positive" : "negative");
     x > 0 ? cout << "positive number" : cout << "negative number";
 
     return 0;
