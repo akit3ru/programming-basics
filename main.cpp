@@ -16,7 +16,7 @@
 - unsigned long long: 8 байт, от 0 до 18 446 744 073 709 551 615.
 
 2. вещественные
-- float: 4 байта, от -3.14E–38 до 3.14E+38 - 1
+- float: 4 байта, от 3.14E–38 до 3.14E+38
 - double: 8 байт, от 1.7E–308 до 1.7E+308
 - long double: 8 байт, от 2.23E-308 до 1.8E+308.
 
@@ -28,10 +28,11 @@
 - char32_t: 4 байта, от 0 до 4 294 967 295.
 
 4. логические
-- bool: 1 байт, от 0 до 1.
+- bool: 1 байт, от 0 до 255.
 */
 
-/* #include <iostream>
+/*
+#include <iostream>
 #include <string>
 #include <cmath>
 #include <iomanip>
@@ -39,7 +40,6 @@ using namespace std;
 
 void dataTypeOutput()
 {
-    setlocale(LC_ALL, "Rus");
     string si_1b = "от - 128 до 127";
     string unsi_1b = "от 0 до 255";
     string si_2b = "от -32768 до 32767";
@@ -53,7 +53,7 @@ void dataTypeOutput()
     cout << "название типа: int, размер: 2 или 4 байта, мин. и макс. значения: \n" << si_2b << " или " << si_4b << endl;
     cout << "название типа: unsigned long, размер: 4 байта, мин. и макс. значения: " << unsi_4b << endl;
     cout << "название типа: long long, размер: 8 байт, мин. и макс. значения: \n" << si_8b << endl;
-
+    
     cout << "-----вещественный тип данных-----" << endl;
     cout << "название типа: float, размер: 4 байта, мин. и макс. значения: от 3.14E–38 до 3.14E+38" << endl;
     cout << "название типа: double, размер: 8 байт, мин. и макс. значения: от 1.7E–308 до 1.7E+308" << endl;
@@ -108,7 +108,7 @@ int main()
 {
     dataTypeOutput();
     examples();
-}
+} 
 */
 
 /*
@@ -118,7 +118,6 @@ using std::cout, std::endl, std::cin;
 
 int square_triangle()
 {
-    setlocale(LC_ALL, "Rus");
     unsigned long h = 0, a = 0;
     cout << "Программа для рассчёта площади треугольника <3" << endl;
     cout << "Введите высоту треугольника: ";
@@ -127,15 +126,20 @@ int square_triangle()
     cin >> a;
     double s = (a * h) / 2.0;
     cout << "Площадь равна " << s;
+
     return 0;
 }
+
 int main()
 {
     square_triangle();
+
     return 0;
 }
+
 */
 
+/*
 #include <iostream>
 using std::cout, std::endl, std::cin;
 
@@ -151,7 +155,7 @@ int firstCondition()
     cout << "введите число C: ";
     cin >> c;
 
-    if (a % c == 0 && b % c == 0) 
+    if (a % c == 0 && b % c == 0)
     {
         cout << "(A+B)/C = " << (a + b) / c << endl;
     }
@@ -217,14 +221,131 @@ int numberSign()
     return 0;
 }
 
+#include <iostream>
+using std::cout, std::endl, std::cin;
+
+int firstCondition()
+{
+        setlocale(LC_ALL, "Rus");
+        unsigned int a = 0, b = 0, c = 0;
+        cout << "условие 1 :)" << endl;
+        cout << "введите число А: ";
+        cin >> a;
+        cout << "введите число B: ";
+        cin >> b;
+        cout << "введите число C: ";
+        cin >> c;
+
+        if (a % c == 0 && b % c == 0)
+        {
+            cout << "(A+B)/C = " << (a + b) / c << endl;
+        }
+        else if (a % c == 0 && b % c != 0)
+        {
+            cout << "A/С+B = " << a / c + b << endl;
+        }
+        else
+        {
+            cout << "A - B - C = " << a - b - c << endl;
+        }
+
+        return 0;
+    }
+
+    int dayOfTheWeek()
+    {
+        setlocale(LC_ALL, "Rus");
+        int n;
+        cout << "\nузнать день недели по цифре!!\nвведите цифру от 1 до 7: ";
+        cin >> n;
+
+        switch (n)
+        {
+        case 1:
+            cout << "сегодня понедельник!" << endl;
+            break;
+        case 2:
+            cout << "сегодня вторник!" << endl;
+            break;
+        case 3:
+            cout << "сегодня среда!" << endl;
+            break;
+        case 4:
+            cout << "сегодня четверг!" << endl;
+            break;
+        case 5:
+            cout << "сегодня пятница!" << endl;
+            break;
+        case 6:
+            cout << "сегодня суббота!" << endl;
+            break;
+        case 7:
+            cout << "сегодня воскресенье!" << endl;
+            break;
+        default:
+            cout << "дня недели с такой цифрой нет :(" << endl;
+        }
+
+        return 0;
+    }
+
+
+    int numberSign()
+    {
+        cout << "\nопределить, положительное число или отрицательное ><" << endl;
+        cout << "введите 1 или -1: ";
+        int x = 0;
+        cin >> x;
+        cout << (x > 0 ? "positive" : "negative");
+        x > 0 ? cout << "positive number" : cout << "negative number";
+
+        return 0;
+*/
+
+/*
+// лаба 3
+#include <iostream>
+using std::cout, std::endl, std::cin;
+
+void meow()
+{
+    setlocale(LC_ALL, "Rus");
+    unsigned int x = 0;
+    cout << "Введите изначальное число: ";
+    cin >> x;
+    int i = 0;
+    cout << "Введите номер бита, в который хотите установить 0: ";
+    cin >> i;
+    cout << "Вы получили " << (x & ~(1 << i)) << endl;
+}
 
 int main()
 {
-    //firstCondition();
-    //dayOfTheWeek();
-    numberSign();
+    meow();
+    return 0;
+}
+*/
+
+#include <iostream>
+using std::cout, std::cin, std::endl;
+
+void sumOfDigits()
+{
+    unsigned int n;
+    unsigned int sum = 0;
+    cout << "Введите число: ";
+    cin >> n;
+    while (n > 0)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << "Сумма цифр = " << sum << endl;
+}
+
+int main()
+{
+    sumOfDigits();
 
     return 0;
 }
-
-
