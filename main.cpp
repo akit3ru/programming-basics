@@ -300,7 +300,8 @@ int main()
 */
 
 
-// lab 6
+// lab 6.2
+/*
 #include <iostream>
 
 int main()
@@ -349,4 +350,37 @@ int main()
     for (int i = 0; i < n; i++)
         std::cout << mas[i] << " ";
 
+}
+*/
+
+// lab 6.1
+#include <iostream>
+
+int main()
+{
+    int mas[10000];
+    int n;
+    std::cin >> n;
+
+    for (int i = 0; i < n; i++)
+        std::cin >> mas[i];
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i+1; j < n; j++)
+        {
+            int lastI = 0;
+            lastI = mas[i] % 10;
+            int lastJ = 0;
+            lastJ = mas[j] % 10;
+
+            if (lastI < lastJ)
+            {
+            int tmp = mas[i];
+            mas[i] = mas[j];
+            mas[j] = tmp;
+            }
+        }
+
+    for (int i = 0; i < n; i++)
+        std::cout << mas[i] << " ";
 }
