@@ -353,6 +353,7 @@ int main()
 }
 */
 
+
 // lab 6.1
 #include <iostream>
 
@@ -365,22 +366,92 @@ int main()
     for (int i = 0; i < n; i++)
         std::cin >> mas[i];
 
+    bool isDigitSame = false;
     for (int i = 0; i < n - 1; i++)
-        for (int j = i+1; j < n; j++)
+    {
+        for (int j = i + 1; j < n; j++)
         {
-            int lastI = 0;
-            lastI = mas[i] % 10;
-            int lastJ = 0;
-            lastJ = mas[j] % 10;
-
-            if (lastI < lastJ)
+            if (mas[i] == mas[j])
             {
-            int tmp = mas[i];
-            mas[i] = mas[j];
-            mas[j] = tmp;
+                isDigitSame = true;
+                break;
+            }
+        }
+        if (isDigitSame)
+            break;
+    }
+
+    if (isDigitSame)
+    {
+        for (int i = 0; i < n - 1; i++)
+            for (int j = i + 1; j < n; j++)
+            {
+                int lastI = 0;
+                lastI = mas[i] % 10;
+                int lastJ = 0;
+                lastJ = mas[j] % 10;
+
+                if (lastI < lastJ)
+                {
+                    int tmp = mas[i];
+                    mas[i] = mas[j];
+                    mas[j] = tmp;
+                }
+            }
+        for (int i = 0; i < n; i++)
+            std::cout << mas[i] << " ";
+    }
+   
+}
+
+
+// lab 6.2
+#include <iostream>
+
+int main()
+{
+    int mas[10000];
+    int n;
+    std::cin >> n;
+    
+    for (int i = 0; i < n; i++)
+        std::cin >> mas[i];
+
+    for (int i = 0; i < n-1; i++)
+        for (int j = i + 1; j < n; j++)
+        {
+            int prodI = 1;
+            int firstI = mas[i];
+            while (firstI > 9)
+            {
+                prodI *= (firstI % 10);
+                firstI /= 10;
+            }
+            prodI *= firstI;
+
+            int firstJ = mas[j];
+            int prodJ = 1;
+            while (firstJ > 9)
+            {
+                prodJ *= (firstJ % 10);
+                firstJ /= 10;
+            }
+            prodJ *= firstJ;
+
+            if ((firstI > firstJ) ||
+                ((firstI == firstJ) && (prodI > prodJ)) ||
+                ((firstI == firstJ) && (prodI == prodJ) && (mas[i] > mas[j])))
+            {
+                int tmp = mas[i];
+                mas[i] = mas[j];
+                mas[j] = tmp;
             }
         }
 
     for (int i = 0; i < n; i++)
         std::cout << mas[i] << " ";
+
 }
+
+
+
