@@ -111,6 +111,7 @@ int main()
 }
 */
 
+/*
 #include "func.hpp"
 #include <iostream>
 
@@ -132,6 +133,23 @@ int main()
             std::cout << std::endl;
         }
 
+    }
+
+    return 0;
+}
+*/
+
+// lab 9
+#include <iostream>
+
+int main()
+{
+    long long value = (2 ^ 63) - 1;
+    unsigned char* adress = reinterpret_cast<unsigned char*>(value);
+
+    for (int i = 0; i < 8; i++)
+    {
+        std::cout << i + 1 << " byte - " << static_cast<int>(*(adress + i)) << std::endl;
     }
 
     return 0;
